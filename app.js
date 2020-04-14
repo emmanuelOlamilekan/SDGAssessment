@@ -33,6 +33,11 @@ app.post('/api/v1/on-covid-19', (req, res, next) => {
   res.json(data);
 });
 
+app.post('/api/v1/on-covid-19/json', (req, res, next) => {
+  const data = covid19ImpactEstimator(req.body)
+  res.json(data);
+});
+
 app.post('/api/v1/on-covid-19/xml', (req, res, next) => {
   const data = covid19ImpactEstimator(req.body)
   res.header('Content-Type', 'text/xml');
