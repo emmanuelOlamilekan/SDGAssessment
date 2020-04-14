@@ -24,8 +24,8 @@ const getImpact = (data, multiplier) => {
   const factor = Math.trunc(totalDays / 3);
   const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** factor));
   const severeCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * (15 / 100));
-  const hospitalBedsByRequestedTime = getAvailableBeds(data.totalHospitalBeds,
-    severeCasesByRequestedTime);
+  const hospitalBedsByRequestedTime = Math.trunc(getAvailableBeds(data.totalHospitalBeds,
+    severeCasesByRequestedTime));
   const impact = {
     data,
     infectionsByRequestedTime,
