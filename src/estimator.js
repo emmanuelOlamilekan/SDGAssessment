@@ -1,20 +1,20 @@
 const normalizeDuration = (periodType, timeToElapse) => {
-let days = 0;
-switch (periodType) {
-    case 'days':
-        days = timeToElapse;
-        break;
-    case 'weeks':
-        days = timeToElapse * 7;
-        break;
-    case 'months':
-        days = timeToElapse * 30;  
-        break;
-    default:
-        days = 0;
-        break;
-}
-return days;
+    let days = 0;
+    switch (periodType) {
+        case 'days':
+            days = timeToElapse;
+            break;
+        case 'weeks':
+            days = timeToElapse * 7;
+            break;
+        case 'months':
+            days = timeToElapse * 30;  
+            break;
+        default:
+            days = 0;
+            break;
+    }
+    return days;
 };
 const getImpact = (data,multiplier) => {
     let impact = {};
