@@ -34,8 +34,8 @@ const getImpact = (data, multiplier) => {
     severeCasesByRequestedTime));
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * (5 / 100));
   const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * (2 / 100));
-  const dollarsInFlight = getEconomyDailyLost(infectionsByRequestedTime,
-    data.region.avgDailyIncomeInUSD, data.region.avgDailyIncomePopulation, totalDays);
+  const dollarsInFlight = Math.trunc(getEconomyDailyLost(infectionsByRequestedTime,
+    data.region.avgDailyIncomeInUSD, data.region.avgDailyIncomePopulation, totalDays));
   const impact = {
     data,
     infectionsByRequestedTime,
