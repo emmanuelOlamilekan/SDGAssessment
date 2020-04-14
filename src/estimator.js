@@ -1,20 +1,20 @@
 const normalizeDuration = (periodType, timeToElapse) => {
-    let days = 0;
-    switch (periodType) {
-        case 'days':
-            days = timeToElapse;
-            break;
-        case 'weeks':
-			days = timeToElapse * 7;
-            break;
-        case 'months':
-            days = timeToElapse * 30;  
-            break;
-        default:
-            days = 0;
-            break;
-    }
-	return days;
+let days = 0;
+switch (periodType) {
+    case 'days':
+        days = timeToElapse;
+        break;
+    case 'weeks':
+        days = timeToElapse * 7;
+        break;
+    case 'months':
+        days = timeToElapse * 30;  
+        break;
+    default:
+        days = 0;
+        break;
+}
+return days;
 };
 const getImpact = (data,multiplier) => {
     let impact = {};
@@ -29,7 +29,7 @@ const getImpact = (data,multiplier) => {
 const covid19ImpactEstimator = (data) => {
     const impact = getImpact(data,10);
     const severeImpact = getImpact(data,50);
-	let resp = {data: data, impact:impact, severeImpact:severeImpact};
-	return resp;
+    let resp = {data: data, impact:impact, severeImpact:severeImpact};
+    return resp;
 };
 export default covid19ImpactEstimator;
