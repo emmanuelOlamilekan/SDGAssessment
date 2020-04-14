@@ -13,7 +13,7 @@ const normalizeDuration = (periodType, timeToElapse) => {
 };
 
 const getAvailableBeds = (totalHospitalBeds, severeCasesByRequestedTime) => {
-  const availableHospitalBed = Math.trunc(totalHospitalBeds * (35 / 100));
+  const availableHospitalBed = totalHospitalBeds * (35 / 100);
   const hospitalBedsByRequestedTime = availableHospitalBed - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
 };
