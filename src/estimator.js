@@ -18,6 +18,10 @@ const getAvailableBeds = (totalHospitalBeds, severeCasesByRequestedTime) => {
   return hospitalBedsByRequestedTime;
 };
 
+const  getEconomyDailyLost = (infectionsByRequestedTime, averageDailyIncome,days) => {
+  const dollarsInFlight = (infectionsByRequestedTime * averageDailyIncome)/days;
+  return dollarsInFlight;
+};
 const getImpact = (data, multiplier) => {
   const currentlyInfected = data.reportedCases * multiplier;
   const totalDays = normalizeDuration(data.periodType, data.timeToElapse);
@@ -26,12 +30,19 @@ const getImpact = (data, multiplier) => {
   const severeCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * (15 / 100));
   const hospitalBedsByRequestedTime = Math.trunc(getAvailableBeds(data.totalHospitalBeds,
     severeCasesByRequestedTime));
+  const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * (5 / 100));
+  const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * (2 / 100));
+  const dollarsInFlight = getEconomyDailyLost(infectionsByRequestedTime,
+    data.region.avgDailyIncomeInUSD, totalDays);
   const impact = {
     data,
     infectionsByRequestedTime,
     currentlyInfected,
     severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
   return impact;
 };
