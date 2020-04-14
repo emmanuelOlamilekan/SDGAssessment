@@ -37,7 +37,6 @@ const getImpact = (data, multiplier) => {
   const dollarsInFlight = Math.trunc(getEconomyDailyLost(infectionsByRequestedTime,
     data.region.avgDailyIncomeInUSD, data.region.avgDailyIncomePopulation, totalDays));
   const impact = {
-    data,
     infectionsByRequestedTime,
     currentlyInfected,
     severeCasesByRequestedTime,
