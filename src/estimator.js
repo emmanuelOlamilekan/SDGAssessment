@@ -18,8 +18,8 @@ const getAvailableBeds = (totalHospitalBeds, severeCasesByRequestedTime) => {
   return hospitalBedsByRequestedTime;
 };
 
-const getEconomyDailyLost = (infectionsByRequestedTime, averageDailyIncome,days) => {
-  const dollarsInFlight = (infectionsByRequestedTime * averageDailyIncome)/days;
+const getEconomyDailyLost = (infectionsByRequestedTime, averageDailyIncome, days) => {
+  const dollarsInFlight = (infectionsByRequestedTime * averageDailyIncome) / days;
   return dollarsInFlight;
 };
 const getImpact = (data, multiplier) => {
